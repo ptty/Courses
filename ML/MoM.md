@@ -1,4 +1,4 @@
-## Week 1
+# Week 1
 ### ML: 
 
 Arthur Samuel (1959) - chess playe - ability to learn how to play w/ o programming it explicitly.
@@ -263,7 +263,9 @@ A' = [1,3; 2,5;0,9] - transposed
 
 ![](img/SNAG_Program-0022.png)
 
-## Week 2
+# Week 2
+
+## Multivariate Linear Regression
 
 ### Mutiple features
   Context: Predict house price with more features (size, number of beds, no floors, age, price)
@@ -311,9 +313,34 @@ h(x) = Theta0+Thata1*x+Theta2*sqrt(x)
 
 ![](img/SNAG_Program-0032.png)
 
-	
+
+## Computing Parameters Analytically
+### Normal Equation
+	alternative to Gradient Descent to get 0
+
+	Intuition:
+		Assume: Thatea is a raw number
+
+		J(Thata) = a*Thata^2 + b*Theta + c
+
+		Solution: Get J derivative and assign it to 0
+
+![](img/SNAG_Program-0028.png)
+![](img/SNAG_Program-0033.png)
+
+Feature scaling is NOT required for Normal Equation!
+
+![](img/SNAG_Program-0034.png)
+
+Pros & Cons:
+
+![](img/SNAG_Program-0035.png)
 
 
+### Normal Equation Noninvertibility
+Sometimes X'*X non-invertable.
+
+![](img/SNAG_Program-0036.png)
 
 
 
