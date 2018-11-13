@@ -263,6 +263,56 @@ A' = [1,3; 2,5;0,9] - transposed
 
 ![](img/SNAG_Program-0022.png)
 
+## Week 2
+
+### Mutiple features
+  Context: Predict house price with more features (size, number of beds, no floors, age, price)
+
+  x1 - size
+  x2 - bedrooms
+  x3 - floors
+  x4 - age
+  y = price
+
+![](img/SNAG_Program-0027.png)
+![](img/SNAG_Program-0023.png)
+![](img/SNAG_Program-0024.png)
+![](img/SNAG_Program-0025.png)
+![](img/SNAG_Program-0026.png)
+
+### Gradient Descent in Practice I - Feature Scaling
+
+Contour is skinny if the scale of feature is very different, but scaling it down it allows contour plots to be more effective for gradient descent to work out the minimum (w/ less steps)
+
+Idea: get every feature into approx. a -1 <= x(i) <= +1 range;
+
+![](img/SNAG_Program-0029.png)
+
+#### Mean normalization
+	x(i) = (size(i) - mean(i)) / range(i) - ( max - min)
+
+### Gradient Descent in Practice II - Learning Rate
+
+![](img/SNAG_Program-0030.png)
+![](img/SNAG_Program-0031.png)
+
+### Features and Polynomial Regression
+
+Context: House price prediction with frontage and depth as features
+Idea: 
+	you can create 1 feature instead using 2 features
+	area = frontage * depth;
+####  Polynomial Regression
+
+Options:
+h(x) = Theta0+Thata1*x+Theta2*x^2 (dependes on training set)
+h(x) = Theta0+Thata1*x+Theta2*x^2+Theta3*x^3
+h(x) = Theta0+Thata1*x+Theta2*sqrt(x)
+
+![](img/SNAG_Program-0032.png)
+
+	
+
 
 
 
