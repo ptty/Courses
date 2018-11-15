@@ -113,8 +113,8 @@ Cost function J(Theta)
 
 Corelations
 ![](img/ScreenShot_2018-11-11_at_18.28.39.png)
-![](img/ScreenShot_2018-11-11_at_18.28.39.png)
-![](img/ScreenShot_2018-11-11_at_18.28.39.png)
+![](img/ScreenShot_2018-11-11_at_18.29.39.png)
+![](img/ScreenShot_2018-11-11_at_18.30.48.png)
 ![](img/SNAG_Program-0001.png)
 ![](img/SNAG_Program-0003.png)
 
@@ -293,6 +293,8 @@ Idea: get every feature into approx. a -1 <= x(i) <= +1 range;
 #### Mean normalization
 	x(i) = (size(i) - mean(i)) / range(i) - ( max - min)
 
+![](img/2018-11-15_22-03-12.339.png)
+
 ### Gradient Descent in Practice II - Learning Rate
 
 ![](img/SNAG_Program-0030.png)
@@ -342,5 +344,153 @@ Sometimes X'*X non-invertable.
 
 ![](img/SNAG_Program-0036.png)
 
+## Octave
+### Operations
+   - not equal - ~=
+   - PS('>> ');  - change command line string
+   - ; in the end supresses the output
+   - b = 'hi'
+   - disp(sprintf('2 deciamls: %0.2f', a))
+   - format long / format short]
+
+### Matrixes
+
+  - v = 1:0.1:2 
+  - 2*ones(2,3)  - 2x3
+  - zeros(1,3) - 1x3
+  - rand(3,3) 3x3
+  - randn(1,3) - gausian dist
+  - hist(w,50) - print histogram w/ 50 bars
+  - help eye
+  - size(A)
+  - length(A) - longer dimention
+  - A(2, :) - show everything second row
+  - A(:, 2) - show everything in second column
+  - A([1 3], :) - get from 1 and 3 row 
+  - A(:, 2) = [ 10; 11; 12] - replace second column with new values
+  - A(A, [100; 101; 202]) - add new column to right
+  - A(:) - put all elements into vector
+  - C = [A B] or [A, B] - conctatination 2 matrcies
+  - C = [A; B] - put B matrix on bottom of A
+  - 
+
+### Data operations
+
+- pwd - path
+- ls - files list
+- cd - go to dir
+- load('file.dat') - load file into Octave
+- who - what variables in mem
+- clear A - remove variable from mem
+- v = priceY(1:10) - First 10 elements 
+- save hello.dat v; - save data into file
+- save hello.dat v - ascii; - text file save
+
+### Computation
+ - A*C - matrix multiplaication
+ - A .* B - element-wise multiplication 
+ - A .^ B 
+ - 1 ./A
+ - log(v)
+ - exp(v)
+ - abs(v)
+ - -v
+ - v+ones(length(v), 1) - increase everything by 1
+ - v + 1
+ - A' - transpose
+ - [val, ind] = max(A) - return max and location
+ - a < 3 - return matrix 0,1
+ - find(a < 3) - return idx of element meets the criteria
+ - A = magic(3) - generates 3x3
+ - [r,c] = find(A>=7) - return row and col numbers
+ - sum()
+ - floor()
+ - ceil()
+ - rand(3) - 3x3
+ - max(A, [], 1) - max colum wise
+ - max(A, [], 1) - max row wise
+ - sum(A, 1) - sum colum wise
+ - sum(A, 2) - sum row wise
+ - flipup(A)
+ - pinv(A) - inverse
+ 
+### Plotting
+
+  - plot(t, y1); t=[0, 0.1, 2]; y1=sin(2*pi*4*t);
+  - hold on; - plots on top of existing
+  - plot(t, y1, 'r') - plots red
+  - xlable('time');
+  - title('miplot')
+  - print -dpng 'myplot.png'
+  - help plot
+  - close - close plot
+  - figure(1); plot(t,y1)'
+  - figure(2); plot(t, y2);
+  - subplot(1,2,1);
+  -     plot(t, y2);
+  -     subplot(1,2,2);
+  -     plot(t, y1);
+  - axis([0.5 1 -1 1]);
+  - clf; - clear figure
+  - imagesc(A); - grid of color
+  - imagesc(A), colorbar, colormap gray; - 3 commands runs each after another
 
 
+### Control Statements: for, while, if statement
+ 
+#### FOR
+ - for i=1:10, v(i) = 2^i; end;
+ - indices=1:10;
+    -for i=indices, disp(i); end;
+
+#### WHILE
+
+- i =1;
+- while i <= 5,
+    + v(i) = 100;
+    + i = i+ 1;
+    + end;
+- i=1;
+
+
+- while true,
+    + v(i) = 999;
+    + i = i+1;
+    + if i == 6,
+        * break;
+    + end;
+   end;
+
+#### IF
+
+- if (v1) == 1,
+-   disp(' one');
+- elseif v(1) == 2,
+-   disp('two')
+- else
+-   disp('other');
+- end;   
+
+#### Functions
+  1. create file myFunction.m
+
+
+  2. add body:
+  
+    function y = myFunction(x)
+    y= x^2;
+ 
+ 3. cd to location
+ 4.myFunction(5); 
+
+addpath('path to functions files');
+
+##### Functions (many return values)
+function [y1,y2] = myFunction(x)  -- multi values returned
+    y1= x^2;
+    y2= x^3;
+
+##### Vectorization 
+
+![](img/2018-11-15_11-29-40.696.png)
+![](img/2018-11-15_11-36-57.054.png)
