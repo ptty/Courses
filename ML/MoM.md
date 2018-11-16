@@ -681,3 +681,52 @@ X is non-invertible. However, when we add the term λ⋅L, then
 ![](img/SNAG_Program-0067.png) 
 ![](img/SNAG_Program-0068.png) 
 
+# Week 4 (Neural networks)
+
+##Non-linear Hypotheses
+
+Why do we need it NN?
+ 1. It might be hard to find non-linear function due to 
+ - many features 
+ - hard to calculate
+ - Theta(n^3)
+ 2. Recognize if the image is car or not?
+ - 50x50 pixel -> 2500 pixel; n = 2500 (7500 if RGB)
+ - Quadratic features = 3 mil
+ 
+## Neurons and the Brain
+
+![](img/SNAG_Program-0069.png) 
+![](img/SNAG_Program-0070.png) 
+
+## Model Representation 1
+
+![](img/SNAG_Program-0072.png) 
+![](img/SNAG_Program-0073.png) 
+
+
+### Neuron 
+  Key terms:
+    1. Neuron input wises
+    2. Neuron output
+    3. Bias unit
+    4. Weights = parameters *theta*
+
+![](img/SNAG_Program-0075.png) 
+
+### Neuron Network
+  Key terms:
+  - 1 Layer - Input layer
+  - Last Layer - Output Layer 
+  - Layers in middle = hidden layers
+  - Units - elements of layer
+
+![](img/SNAG_Program-0076.png) 
+
+![](img/SNAG_Program-0077.png) 
+
+## Model Representation 2
+
+
+
+
