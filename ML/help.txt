@@ -1,15 +1,30 @@
+
+//Plotting
 plotData(X(:, 2), y)
 hold on
 plot(X(:,2), X*theta, '-')
 legend('Training data', 'Linear regression')
 
+//Printing
 fprintf('Expected theta values (approx)\n');
 fprintf(' -3.6303\n  1.1664\n\n');
 
-
+//Hyposis & Cost function
 h = X*theta;
 J = (1/(2*m))*sum((h-y).^2);
 
-
-First 10 examples from the dataset: 
+//Printing first 10 examples from the dataset: 
 octave:119> fprintf(' x = [%.0f %.0f], y = %.0f \n', [X(1:10,:) y(1:10,:)]');
+
+
+///Advanced optiomization
+
+function [jVal, gradient] = costFunction(theta)
+  jVal = [...code to compute J(theta)...];
+  gradient = [...code to compute derivative of J(theta)...];
+end
+
+options = optimset('GradObj', 'on', 'MaxIter', 100);
+initialTheta = zeros(2,1);
+   [optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);
+

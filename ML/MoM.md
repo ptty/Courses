@@ -494,3 +494,190 @@ function [y1,y2] = myFunction(x)  -- multi values returned
 
 ![](img/2018-11-15_11-29-40.696.png)
 ![](img/2018-11-15_11-36-57.054.png)
+
+
+# Week 3
+## Classification (binary classification problem)
+	called Logistic Regression 
+
+####  Problem:
+		Email: Spam/Not Spam
+		Online Transactions: Fraudulent (Yes, No)
+		Tumor: Mlignant/Benign
+
+		y e {0,1} - binary classification problem
+
+		0 - Negative class
+		1 - Positive class
+
+		h = O^T*x
+
+		Threshold: 
+			if h >= 0.5 - predict y = 1;
+			if h < 0.5 - predict y = 0;
+
+####  Why linear regression does not fit to classification problem?
+		1. If there is a fact far behind most of the training set facts, it affects the performance badly		
+		2. h can be > 1 or < 0
+
+![](img/SNAG_Program-0037.png)
+
+#### What is solution?
+		Logistic Regression (classification algoritm, not regression): 0 <= h <= 1
+
+## Hypothesis Representation
+	Goal:  0 <= h <= 1
+
+	h = g(Theta^T*x)
+	g - sigmoid, or logisitc function 
+
+
+![](img/SNAG_Program-0038.png)
+
+##### Interpretation
+	h  becomes probabilty P - 1 - 100% probable
+	![](img/SNAG_Program-0039.png)
+
+## Decision boundary
+	y = 1 if h >= 0.5 or  Theta^T*x >= 0 
+	y = 0 if h < 0.5 or  Theta^T*x < 0 
+
+![](img/SNAG_Program-0040.png)
+![](img/SNAG_Program-0041.png)
+NOTE: decision boundary is a property of the hyposis, not the data set.
+
+### Non-liner decision boundaries
+	h = g(Theta0 + Theta1*x1 + Theta2*x2 + Theta3*x1^2 + Theta4*x2^2);
+
+![](img/SNAG_Program-0042.png)
+
+## Logistic regresion. Cost Function
+	Hot to choose paramter Theta?
+
+![](img/SNAG_Program-0043.png) 
+
+ the problem:
+ 	the sigmoid / logistic functio leads is non-convex Cost function (J)(having many minimums) so it's hard to find global minimum	
+
+![](img/SNAG_Program-0044.png) 
+
+solution:
+	Different cost function:
+		J(h(x), y) = { -log(h(x))} if y = 1; 
+		               -log(1-h(x))} if y = 0; }
+
+![](img/SNAG_Program-0045.png) 		               
+   Intuition:
+       if h(x) = 0 (predict P(y=1) = 0), but y = 1 we penalize learning argorthm by very large cost;
+
+![](img/SNAG_Program-0046.png)         
+Intuition:
+       if h(x) = 1 (predict P(y=0) = 0), but y = 0 we penalize learning argorthm by very large cost;
+
+
+![](img/SNAG_Program-0047.png)   
+
+## Simplified Cost Function and Gradient Descent
+
+![](img/SNAG_Program-0048.png)  
+![](img/SNAG_Program-0050.png)  
+![](img/SNAG_Program-0051.png)  
+![](img/SNAG_Program-0052.png)  
+
+## Advanced Optimization
+    Optimized algorithms:
+        - Conjugate gradient
+        - BFGS
+        - L-BFGS
+
+    Advantages:
+        - No need to manually poick Alpha
+        - Often faster than gradient descent
+    Disadvanteges:
+        - More complex
+
+
+![](img/SNAG_Program-0053.png)  
+![](img/SNAG_Program-0054.png)  
+
+## Multiclass Classification: One-vs-all
+    Examples: 
+![](img/SNAG_Program-0055.png)  
+![](img/SNAG_Program-0056.png) 
+![](img/SNAG_Program-0057.png) 
+
+## Overfitting
+
+Linear regression:
+
+![](img/SNAG_Program-0058.png) 
+
+Logistic regression:
+
+![](img/SNAG_Program-0059.png) 
+
+### How to address?
+  
+    1. We can plot and see (does not work for many feature as hard to plot)
+    2. Reduce number of features
+    3. Model select algorithm (reducing features by algorithm)
+    4. Regularization (Keep all features but reduce magnitude/values of Theta)
+
+## Regularization
+
+  Intuition:
+
+  ![](img/SNAG_Program-0060.png) 
+
+  Small values of parameters Thata:
+    - Simpler hyposiss (That3,4 ~ 0)
+    - Less prone to overfitting
+
+
+  Housing:
+    -Features: x1,...,X100
+    -Parameter: Theta0,...,Theta100  
+
+  ![](img/SNAG_Program-0061.png) 
+
+Lambda - reg. parameter.
+
+Goal:
+  Find tradeoff between: 
+  - we would like to fit to traing set well
+  - keeping hyposis relatively simple
+
+  Usually Theta0 is NOT regularized.
+
+  ![](img/SNAG_Program-0062.png) 
+  ![](img/SNAG_Program-0063.png) 
+
+## Regularized Linear Regression
+
+### Reg. for Gradient Descent
+
+![](img/SNAG_Program-0064.png) 
+![](img/SNAG_Program-0065.png) 
+
+### Reg. for Normal Equasion
+
+![](img/SNAG_Program-0066.png) 
+
+L is a matrix with 0 at the top left and 1's down the diagonal, with 0's everywhere else. It should have dimension (n+1)×(n+1). Intuitively, this is the identity matrix (though we are not including x_0x 
+0
+​  ), multiplied with a single real number λ.
+
+Recall that if m < n, then X^TXX 
+T
+ X is non-invertible. However, when we add the term λ⋅L, then X^TXX 
+T
+ X + λ⋅L becomes invertible.
+
+X is non-invertible. However, when we add the term λ⋅L, then 
+
+
+## Regularized Logistic Regression
+
+![](img/SNAG_Program-0067.png) 
+![](img/SNAG_Program-0068.png) 
+
