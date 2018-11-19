@@ -852,3 +852,12 @@ Two type of classificaiton problem:
 ![](img/SNAG_Program-0095.png) 
 ![](img/SNAG_Program-0096.png) 
 
+
+## Implementation Note: Unrolling Parameters
+
+The problem:
+  if fminunc function is used to find optTheta, it accepts vectors rather than matrices. How to deal with it? - unroll matrix to vector
+
+![](img/SNAG_Program-0097.png) 
+![](img/SNAG_Program-0098.png) 
+
