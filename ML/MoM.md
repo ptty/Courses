@@ -496,7 +496,6 @@
   ![](img/2018-11-15_11-29-40.696.png)
   ![](img/2018-11-15_11-36-57.054.png)
 
-
 # Week 3
   ## Classification (binary classification problem)
   	called Logistic Regression 
@@ -684,6 +683,7 @@
 
 # Week 4 (Neural networks)
 
+
 ##Non-linear Hypotheses
 
 Why do we need it NN?
@@ -801,3 +801,53 @@ the goal is to find Thatas so h ~ y
 ![](img/SNAG_Program-0087.png) 
 
 
+# Week 5
+
+## Cost Function
+
+   L - total number of layers
+   s(l) = no of units (not counting bias unit) in layer l
+   K - no of class
+   S(L) = no of output units
+
+
+Two type of classificaiton problem:
+  1. Binary 
+      y e {1,0}
+
+      h = 1 unit
+      S(L) = 1
+      K = 1 (output units)
+
+      2. Multi-class classification, say, 4 classes
+        y e R^K e.g y = [1; 0; 0; 0]; [0; 1; 0; 0] ..
+        h = R^K
+        S(L) = K (K >= 3)
+
+![](img/SNAG_Program-0088.png) 
+
+### Cost function definition
+  NOTE: regularization does NOT applied for bias units.
+
+  ![](img/SNAG_Program-0089.png) 
+  ![](img/SNAG_Program-0090.png) 
+
+### Backpropogation
+  i.e. how to minimize Cost gunction
+
+    ![](img/SNAG_Program-0091.png) 
+
+ Case 1: just x,y
+
+![](img/SNAG_Program-0092.png) 
+
+#### Backpropogation algorithm
+
+![](img/SNAG_Program-0093.png) 
+![](img/SNAG_Program-0094.png) 
+
+
+
+## Backpropogation intuition 
+![](img/SNAG_Program-0095.png) 
+![](img/SNAG_Program-0096.png) 
