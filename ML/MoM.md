@@ -42,7 +42,7 @@
 
     		  	Supervice learning - give  algorithm a right perices to calculte the right one
 
-    ![](img/ScreenShot_2018-11-11_at_14.59.47.png)
+  ![](img/ScreenShot_2018-11-11_at_14.59.47.png)
 
   ### Example 2:
         Is a tumor malignant(no cancer) or benign based on size?
@@ -57,7 +57,7 @@
 
         1 feature is used - tumor size 
 
-    ![](img/ScreenShot_2018-11-11_at_15.02.54.png)
+  ![](img/ScreenShot_2018-11-11_at_15.02.54.png)
 
   ### Example 3:
   		    Is a tumor benign based on size & age?
