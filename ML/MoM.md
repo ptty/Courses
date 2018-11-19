@@ -536,7 +536,7 @@
 
   ##### Interpretation
   	h  becomes probabilty P - 1 - 100% probable
-  	![](img/SNAG_Program-0039.png)
+  ![](img/SNAG_Program-0039.png)
 
   ## Decision boundary
   	y = 1 if h >= 0.5 or  Theta^T*x >= 0 
@@ -627,7 +627,7 @@
 
     Intuition:
 
-    ![](img/SNAG_Program-0060.png) 
+  ![](img/SNAG_Program-0060.png) 
 
     Small values of parameters Thata:
       - Simpler hyposiss (That3,4 ~ 0)
@@ -638,7 +638,7 @@
       -Features: x1,...,X100
       -Parameter: Theta0,...,Theta100  
 
-    ![](img/SNAG_Program-0061.png) 
+  ![](img/SNAG_Program-0061.png) 
 
   Lambda - reg. parameter.
 
@@ -649,8 +649,8 @@
 
     Usually Theta0 is NOT regularized.
 
-    ![](img/SNAG_Program-0062.png) 
-    ![](img/SNAG_Program-0063.png) 
+  ![](img/SNAG_Program-0062.png) 
+  ![](img/SNAG_Program-0063.png) 
 
   ## Regularized Linear Regression
 
@@ -851,3 +851,4 @@ Two type of classificaiton problem:
 ## Backpropogation intuition 
 ![](img/SNAG_Program-0095.png) 
 ![](img/SNAG_Program-0096.png) 
+
