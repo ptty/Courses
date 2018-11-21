@@ -42,6 +42,64 @@
     Discount rate = Interest rate =  Opportunity cost of capital
     
 
+## Back to basics (Part 2.1): What are annuities?
+
+    Stream of cash flows, 
+        how to find future value in 5 values having interest rate 5%? 
+
+     FV = future cash value for every year and period and sum them up
+
+     What if cash flow is equal every year than we can define ACF (r, n)
+
+*Annuity Compound Factor (ACF)* 
+ V(n) = C * ACF (R, n)
+
+![](img/screenshot2018-11-18at22.22.33.png)
+
+
+
+## Back to basics (Part 2.2): Annuities example: Retirement problem
+
+   Target = 1 000 000$
+   Years = 35
+   Interest rate = 6%
+
+*How much do we need to save every year?*
+
+![](img/screenshot2018-11-18at22.38.37.png)
+
+*Annuity Discount Factor (ADF)*  
+
+What is Present value of cash flow?
+ 
+![](img/screenshot2018-11-18at22.34.51.png)
+
+
+## Back to basics (Part 2.4): Annuities Example: Loan Problem
+
+Example:
+    1. Car price today (present value): $37150
+    2. Take loan (100%)
+    3. Interest rate = 4% year or 4%/12 = 0.33% monthly
+    4. Loan length = 60 monthers
+    
+    What car payments will be? 
+
+    V(0) = 37150 = C X ADF(-.33%, 60) = 683.5
+
+![](img/screenshot2018-11-18at22.48.29.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
