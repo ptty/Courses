@@ -829,22 +829,49 @@ Two type of classificaiton problem:
 ### Cost function definition
   NOTE: regularization does NOT applied for bias units.
 
+  SL - output unit number
+  K - output unit in output layer = output classes
+  K = No of classes - 1
+
   ![](img/SNAG_Program-0089.png) 
   ![](img/SNAG_Program-0090.png) 
+
+NOTE: Regularization terms does not count bias unit
 
 ### Backpropogation
   i.e. how to minimize Cost gunction
 
-    ![](img/SNAG_Program-0091.png) 
+![](img/SNAG_Program-0091.png) 
 
  Case 1: just x,y
 
 ![](img/SNAG_Program-0092.png) 
 
 #### Backpropogation algorithm
+How to minimize J(0)? i.e. calculation of derivative for NN
 
+Steps:
+  1. Forward propogation - allow to compute activation numbers for all neurons (a)
+  2. In order to calculate derivatives , we use backward calculation algorithm:
+   for each node we calculate error for every node delta.j(l)
+
+error in output layer is a __delta__ between the value in learning set and calculated by activation unit
+
+g'(z(3))  = a(3).*(1-a(3)) - g' is derivateive
+
+Notes:
+1. No __delta__ for input layer.
+2. Ignoring Lambda for now
+  
+  
 ![](img/SNAG_Program-0093.png) 
+
+DELTA - accumulate lower case delta 
+
 ![](img/SNAG_Program-0094.png) 
+
+D.ij(l) is a partial derivative for J(0)
+
 
 
 
@@ -860,4 +887,141 @@ The problem:
 
 ![](img/SNAG_Program-0097.png) 
 ![](img/SNAG_Program-0098.png) 
+
+Steps:
+1. Having init parameters Thata1, Theta 2, Theta 3
+2. Unroll to get initialTheta to pass too
+3. fminunc(@costFunction, initialTheta, options)
+4. Define costFunction
+4.1. in costFunction, from thetaVec, get Theta1, Theta2, Theta3
+4.2. in costFunction, use forward prop/back to compute D(1), D(2), D(3) and J(Theta)
+4.3. unroll D(1), D(2), D(3) to get gradientVec
+
+
+## Gradient Checking
+
+Idea: test the implementaiton of prop & back prop is correct
+
+Impl: to calculated derivative approx w/o actual derivative execution
+
+![](img/screenshot2018-11-21at14.45.49.png)
+![](img/screenshot2018-11-21at14.48.08.png)
+
+__Implementation notes:__
+![](img/screenshot2018-11-21at14.51.25.png)
+
+## Random Initialization
+
+last thing needed for NN training - initialTheta
+
+What does it set to?
+
+Say, initalTheta = 0 than:
+a1(2) = a2(2); 
+delta1(2) = delta2(2);
+Theta01(1) = Theta02(1)
+derv01(1) = deriv02(1)
+
+![](img/screenshot2018-11-21at14.58.28.png)
+![](img/screenshot2018-11-21at15.01.04.png)
+
+
+## Putting It Together
+
+Steps:
+1. Choose the NN architecture, how
+  1.1 No of input = dimentions of features
+  1.2 No. output units = number of classes
+  1.3. No of hidden = default is 1 hidden layer
+  1.4 No of hidden units = the more the better
+![](img/screenshot2018-11-21at15.07.34.png)
+2. Training a neural network
+![](img/screenshot2018-11-21at15.11.29.png)
+3. Training a neural network
+![](img/screenshot2018-11-21at15.13.23.png)
+![](img/screenshot2018-11-21at15.17.40.png)
+
+# Week 6
+
+## Deciding What to Try Next
+
+Suppose we have housing prices regularized linear regression but it gives unacceptable error when hypothesis applied for new data, what to do?
+
+Options:
+ 1. More training examples
+ 2. Try smaller sets of features
+ 3. Try to get additional features
+ 4. Try to add plynomian features
+ 5. Try to descrease Lambda
+ 6. Try ito ncreate Lambda
+
+There is technic gives a hint what will work - Machine learining diagnositc.
+
+Diagnostic - a test you can run, to get insight into what is or isn't working with an algorithm, and which will often give you insight as to what are promising things to try to improve a learning algorithm's
+
+Diagnostic may be time consuming but it safes time later;
+
+## Evaluating a Hypothesis
+
+Low training error does not mean it will be performant for new data.
+It's hard to plot hypothsis due to number of features. 
+
+What to do?
+  1. Split data into 2 portion
+  2. 70% -training set (randomly)
+  3. 30% - testing set (m.test - no of test examples) (randomly)
+
+### Learning procedure for linear regression
+  1. Learn parameter Theta from training data (70%) (min training error J(Theta))
+  2. Compute test set error (J(Theta)) (taking Theta from step 1) using test set.
+
+![](img/screenshot2018-11-21at17.40.55.png)
+
+### Learning procedure for logistic regresion
+Misclassification error - another technic
+
+![](img/screenshot2018-11-21at17.44.08.png)
+
+## Model Selection and Train/Validation/Test Sets
+Model selection 
+
+
+  1. you're left to decide what degree of polynomial to fit to a data set.
+  2.  suppose you'd like to choose the regularization parameter longer for learning algorithm
+
+Trainig set Cost may NOT be reliable
+
+switch data into what we discover is called the train, validation, and test sets and see the results for different models
+
+Model selection is degree of polynomial.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
 
