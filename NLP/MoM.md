@@ -1,7 +1,151 @@
 
 
-Week 1:
-	How to: from plain texst to their classification
+## Week 1:
+### Main approaches in NLP
+
+1. Rule-based methods (regular expression)
+	Regular exressions
+	Context-free grammers 
+
+2. Probabilistic modeling and machine learning
+	Likelihood maximization
+	Linear classifiers	
+
+3. Deep learning
+	Recurrent Neural Network
+	Convolutional Neural Networks
+
+By Example:
+	Semantic slot filling: CFG
+	Show me flight from Boston to Sab Francisco on Tuesday
+
+#### Context-free grammers 
+![](img/SNAG_Program-0001.png)
+
+A/D:
+D: Manual rules to be written
+A: Precision (low recall)
+
+#### Machine learning
+Steps:
+1. Training corpus (markaps, annotation)
+2. Feature engineering
+3. Define model
+4. Training (get parameters)
+5. Inference (aka test)
+
+![](img/SNAG_Program-0003.png)
+![](img/SNAG_Program-0002.png)
+
+#### Deep learning
+
+1. Training corpus (markaps, annotation)
+No such step 2. Feature engineering 
+2. Feed sequence of words to NN
+3. Define model
+4. Training (get parameters)
+5. Inference (aka test)
+
+## Brief overview of the next weeks
+
+### Week 1. Text classifcation
+	- predict some tags or categories
+	- predict sentiment 
+	- spam filter
+
+### Week 2.
+	How to predict word sequences?
+	- Language modeling - predict probabilites of next words (e.g. translation)	
+	How to predict tags for the word sequences?
+	*	Part-of-speech tags (e.g. some words are noun, verbs)
+	*	Named entites (find city names for text clasisifcation)
+	*	Sematic slots (parse the query)
+
+### Week 3.
+
+	How to represnt a meaning of a word, a sentence, or text?
+	Meaninig - vector (words to vector), similar words will have similar vectors
+	- Similar words will have the same vectors			
+	- Topic models (document as whole, e.g find topic)	
+
+	Where do we need it?
+	 Distance between nodes gives results if words are close
+
+	![](img/SNAG_Program-0004.png)
+
+### Week 4. 
+	Sequence to sequence task
+		* machine translate
+		* summarization , simplificaiton
+		* conversation chat-bot
+	Encode-decode architecture
+
+Week 5
+	Dialogu agent build
+	* fgoal-oriented (e.g. help in a call-center)
+	* conversational (e.g entertaiment)
+	
+	Stackoverflow chat-bot.
+
+## [Optional] Linguistic knowledge in NLP
+
+Sentence analysis (NLP pyramid)
+
+1. Morphology:
+About different forms of words (care part-of-speech tag, gender). Everything about word. (NTLK lib, Standford parser)
+
+2. Syntax  
+Relationship betword words in sentance (object- subobjects) (NTLK lib)
+
+3. Sematics (Gensim, MALLET)
+Meanings 
+
+4. Pragmatics
+
+![](img/SNAG_Program-0005.png)
+
+### Lingustic knowledge
+1. WordNet - hierarchcal relatioship hyporim/hyypronim, meronims (whole-part)
+2. BabelNet 
+
+How to apply:
+Task:
+ 	Question:  MAry got the footbal she went to the kitchen she left the ball there. Where is the football?
+
+Solution: Deep learning (DAG-LSTM) 
+ 1. Reference (she = Mary, football is metioned twise)	
+ 2.  Hypiromix (football = ball)
+
+DAG-LSTM use the parameters
+
+![](img/SNAG_Program-0006.png)
+
+## Syntex representation
+
+Lingustic representation for later training
+
+#### Syntax: dependency trees
+![](img/SNAG_Program-0007.png)
+
+#### Syntax: constituency trees
+
+![](img/SNAG_Program-0008.png)
+
+Where used:
+1. Main entity recognition 
+2. Sentiment analysis
+2.1. Have santance
+2.2 Parse it into a tree (using syntax)
+2.3. Knowing sentiment of words you can build a tree and build sentiment of whole phrase
+
+Recoursive NN, 
+
+
+
+
+
+
+### How to: from plain texst to their classification
 
 		Example: sentiment analysis
 
