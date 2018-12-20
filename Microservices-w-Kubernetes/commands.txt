@@ -1,0 +1,169 @@
+#Google cloud command
+gcloud compute instances list
+
+//Login to VM
+gcloud compute ssh ubuntu
+gcloud compute zones list
+
+//Set Compute Engine project name
+gcloud config set project ud-mpower-1
+
+//Create cluster
+gcloud container clusters create k0  --zone europe-west1-c
+
+//Login to Kubernetes cluster
+gcloud container clusters get-credentials k0 --zone europe-west1-c --project plasma-ripple-225813
+
+//Create VM instance
+gcloud compute instances create ubuntu --image-project ubuntu-os-cloud --image ubuntu-1604-xenial-v20160420c
+
+//Instances list
+gcloud compute instances list
+
+//Add firewall-rules
+gcloud compute firewall-rules create allow-monolith-nodeport --allow=tcp:31000
+
+# Curl
+curl -H "Authorization:  Bearer $TOKEN" http://127.0.0.1:10082/secure
+curl -H "Authorization: Bearer $TOKEN" http://127.0.0.1:10080/secure
+curl http://127.0.0.1:10080
+curl http://127.0.0.1:10080/login -u user
+curl http://127.0.0.1:10080/secure
+curl http://127.0.0.1:10082
+curl http://127.0.0.1:10090
+curl http://127.0.0.1:10091
+curl http://127.0.0.1:10091
+curl http://127.0.0.1:10091/health
+
+********
+#Kubernetes
+kubectl create -f pods/monolith.yaml
+kubectl describe pods monolith
+kubectl get pods
+kubectl get services
+
+//Run container
+kubectl run nginx --image=nginx:1.10.0
+
+//Create externa IP w/ load balancer 
+kubectl expose deployment nginx --port 80 --type LoadBalancer
+
+
+//Get Pods logs
+kubectl logs monolith
+
+//Forward  local IP port to Pods port 
+kubectl port-forward monolith 10080:80
+
+//Login to Pod
+kubectl exec monolith --stdin --tty -c monolith /bin/sh
+
+//SSL setup
+
+kubectl create secret generic tls-certs --from-file=tls/
+kubectl describe secrets tls-certs
+kubectl create configmap nginx-proxy-conf --from-file=nginx/proxy.conf
+kubectl describe configmap nginx-proxy-conf
+
+kubectl create -f pods/secure-monolith.yaml
+kubectl get pods secure-monolith
+
+kubectl port-forward secure-monolith 10443:443
+
+curl --cacert tls/ca.pem https://127.0.0.1:10443
+
+kubectl logs -c nginx secure-monolith
+
+//Creaate Service (assign EXT IP to Pods / LoadBalancer / Cluster)
+kubectl create -f services/monolith.yaml
+kubectl describe service mpnolith
+
+//Get all labled pods
+kubectl get pods -l "app=monolith,secure=enabled"
+
+//Get pod label
+kubectl describe pods secure-monolith | grep Label
+
+//Add Pod Label
+kubectl label pods secure-monolith "secure=enabled"
+
+
+
+
+*********
+#GO
+go build -o ./bin/auth ./auth
+go build -o ./bin/hello ./hello
+go build -o ./bin/monolith ./monolith
+
+#Run 
+sudo ./bin/auth -http :10090 -health :10091
+sudo ./bin/auth -http :10090 -health :10091 &
+sudo ./bin/hello -http 0.0.0.0:10082
+sudo ./bin/hello -http 0.0.0.0:10082 &
+sudo ./bin/monolith -http :10080
+
+TOKEN=$(curl 127.0.0.1:10090/login -u user | jq -r '.token')
+TOKEN=$(curl http://127.0.0.1:10080/login -u user | jq -r '.token')
+TOKEN=$(curl http://127.0.0.1:10080/login -u user | jq -r '.token')
+
+#Env setup
+echo "export GOPATH=~/go" >> ~/.bashrc
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf go1.6.2.linux-amd64.tar.gz
+
+wget https://storage.googleapis.com/golang/go1.6.2.linux-amd64.tar.gz
+
+
+
+********
+#Docker
+
+## Login to repo
+sudo docker login
+
+## Push/pull
+sudo docker pull nginx:1.10.0
+sudo docker pull nginx:1.10.3
+sudo docker pull ngnix:1.10.0
+sudo docker push ptty/auth:1.0.0
+sudo docker push ptty/hello:1.0.0
+sudo docker push ptty/monolith:1.0.0
+
+
+## Docker list, build and publish imagess
+
+//Build
+go build --tags netgo --ldflags '-extldflags "-lm -lstdc++ -static"'
+sudo docker build -t auth:1.0.0 //Dockerfile required
+sudo docker build -t auth:1.0.0 .
+sudo docker build -t hello:1.0.0 .
+sudo docker build -t monolith:1.0.0 .
+sudo docker images
+sudo docker tag auth:1.0.0 ptty/auth:1.0.0
+sudo docker tag hello:1.0.0 ptty/hello:1.0.0
+sudo docker tag monolith:1.0.0 ptty/monolith:1.0.0
+
+
+## Docker Inspect
+
+sudo docker inspect 0f8bab740a74
+sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}'
+sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' clever_swartz
+sudo docker inspect -f '{{.Name}} - {{.NetworkSettings.IPAddress }}' $(sudo docker ps -aq)
+
+## Run Image in container
+sudo docker run -d auth:1.0.0
+sudo docker run -d hello:1.0.0
+sudo docker run -d monolith:1.0.0
+sudo docker run -d nginx:1.10.0
+sudo docker run -d nginx:1.10.3
+
+## Docker container manimpulation
+sudo docker ps
+sudo docker ps -aq
+sudo docker rm 5d7fe69c31dd bb5217baad7f
+sudo docker stop
+sudo docker stop -f '{{.Name}}' $(sudo docker ps -aq)
+sudo docker stop 5d7fe69c31dd
+sudo docker stop bb5217baad7f

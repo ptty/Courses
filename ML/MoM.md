@@ -995,6 +995,24 @@ switch data into what we discover is called the train, validation, and test sets
 
 Model selection is degree of polynomial.
 
+Say, we choose 5th polinom as it gives best performance J.test(Theta(5)). 
+However, there is problem: J.test(Theta(5)) is likely to be optiomistic estimates of generalization error i.e. (d = degree of polynomial) is fit to test set. 
+
+![](img/screenshot2018-11-22at14.18.39.png)
+Conclusion: The performance of particular degree of polinom is not always reliable as it overfitting the testing set.
+
+![](screenshot2018-11-22at14.21.05.png)
+![](screenshot2018-11-22at14.22.57.png)
+
+How to select the right model?
+
+![](screenshot2018-11-22at14.25.34.png)
+
+
+
+
+
+
 
 
 
