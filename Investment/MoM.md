@@ -54,8 +54,6 @@
 What if all cash flow is the same amount every year?
 
 ![](img/SNAG_Program-0002.png)
-
-![](img/SNAG_Program-0002.png)
 ![](img/SNAG_Program-0003.png)
 
 ### Annuity Compound Factor (Present Value) - Retirement problem
@@ -121,41 +119,8 @@ Effective rate = (1.0033)^12 -1 = 4.032%
 
 ![](img/SNAG_Program-0008.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Question:
     What are your monthly payments?
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ## Back to basics (Part 2.1): What are annuities?
@@ -206,7 +171,60 @@ Example:
 ![](img/screenshot2018-11-18at22.48.29.png)
 
 
+##  Computing the effective annual interest rate
 
+- compounded monthly, effective rate over the year
+
+![](img/SNAG_Program-0009.png)
+
+
+##Back to basics (Part 4.1): Valuing perpetuities and growing perpetuities
+
+What is perpetuities?
+    It's series of payments (cash flows) over idefinate period
+
+What is maturity?
+    End date of last cash flow payment 
+
+How to calculate V0? 
+    V0 = C / r = 1000/0.01 = 10000
+
+Payment growth - g
+g = 5%
+
+V0 = C / ( r-g) = 1000 / 0.1 - 0.05 = 20000
+
+## Back to basics (Part 4.2): Valuing growing annuities
+
+![](img/SNAG_Program-0010.png)
+
+
+Which one would you prefer if your opportunity cost of capital is 6 percent per year?
+
+
+-Receiving $150,000 today
+
+
+-Receiving $100,000 today and a stream of cash flows every month for the next 36 months starting next month with $1250 every month and growing by 0.125% every month
+
+
+-Receiving $750 every month forever starting today
+
+
++Receiving $25000 today and a stream of cash flows every month forever starting with $500 next month growing by 0.125%
+
+Correct 
+In order to compare these alternatives, we need to find the present value of each cash flow stream. This is a growing perpetuity that starts immediately.
+
+The present value of the growing perpetuity is given by:
+
+V0 = C/(r−g)
+
+where C = 500 , r = 6%/12 = 0.5% and g = 0.125%
+
+V0 = 500/(0.5%−0.125%) = 133,333.333
+
+Total value = 133,333 + 25,000 = 158,333.333
 
 
 
